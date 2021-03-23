@@ -9,7 +9,7 @@ public class PatientController {
 
 	@RequestMapping("/show")
 	public String get() {
-		return "ganesh patil";
+		return "Ganesh Patil Dhotri";
 	}
 	
 }

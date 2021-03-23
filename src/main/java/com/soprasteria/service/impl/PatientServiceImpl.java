@@ -10,7 +10,7 @@ public class PatientServiceImpl implements PatientService{
 
 	@Override
 	public List<Patient> listAllPatient() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

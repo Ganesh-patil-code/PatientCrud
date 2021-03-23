@@ -8,7 +8,7 @@ public class SpringBootPatientCrudApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootPatientCrudApplication.class, args);
-		System.out.println("hi by");
+		System.out.println("hi by ");
 	}
 
 }
