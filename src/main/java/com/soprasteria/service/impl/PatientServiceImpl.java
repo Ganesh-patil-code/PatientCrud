@@ -3,15 +3,23 @@ package com.soprasteria.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.soprasteria.model.Patient;
-import com.soprasteria.service.PatientService;
+import com.soprasteria.repository.PatientRepository;
+import com.soprasteria.service.IPatient;
 
-public class PatientServiceImpl implements PatientService{
+@Component
+public class PatientServiceImpl implements IPatient{
 
+	@Autowired
+	private PatientRepository repo;
+	
 	@Override
 	public List<Patient> listAllPatient() {
 		
-		return null;
+		return repo.findAll();
 	}
 
 	@Override

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.soprasteria.model.Patient;
 
-public interface PatientService {
+public interface IPatient {
 
 	public List<Patient> listAllPatient();
 	

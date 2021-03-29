@@ -1,21 +1,28 @@
 package com.soprasteria.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@Entity
+@NoArgsConstructor
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Patient {
 	
+	@Id
+	@GeneratedValue
 	private int id;
 	private String lastname;
 	private String firstname;
 	private int age;
-	public Patient() {
-		super();
-	}
-	public Patient(int id, String lastname, String firstname, int age) {
-		super();
-		this.id = id;
-		this.lastname = lastname;
-		this.firstname = firstname;
-		this.age = age;
-	}
+	
 	public int getId() {
 		return id;
 	}
