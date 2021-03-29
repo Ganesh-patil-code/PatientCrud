@@ -29,20 +29,21 @@ public class PatientServiceImpl implements IPatient{
 	}
 
 	@Override
-	public Integer SaveContact(Patient patient) {
+	public Integer savePatient(Patient patient) {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.save(patient).getId();
 	}
 
 	@Override
 	public Boolean UpdatePatient(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.existsById(id);
 	}
 
 	@Override
 	public void DeletePatient(Integer id) {
 		// TODO Auto-generated method stub
+		repo.deleteById(id);
 		
 	}
 

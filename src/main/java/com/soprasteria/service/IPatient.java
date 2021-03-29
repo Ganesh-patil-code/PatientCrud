@@ -11,7 +11,7 @@ public interface IPatient {
 	
 	public Optional<Patient> getOnePatient(Integer id);
 	
-	public Integer SaveContact(Patient patient);
+	public Integer savePatient(Patient patient);
 	
 	public Boolean UpdatePatient(Integer id);
 	

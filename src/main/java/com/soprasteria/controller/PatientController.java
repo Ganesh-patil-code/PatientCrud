@@ -5,8 +5,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,5 +73,61 @@ public class PatientController {
 		return resp;
 	}
 	
+	@RequestMapping(value = "/save",method = RequestMethod.POST)
+	public ResponseEntity<String> SavePatient(@RequestBody Patient patient){
+		ResponseEntity<String> resp=null;
+		try {
+			Integer id=service.savePatient(patient);
+			resp=new ResponseEntity<String>("Saved successful",HttpStatus.OK);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			resp=new ResponseEntity<String>("Unable to save..",HttpStatus.INTERNAL_SERVER_ERROR);
+			e.printStackTrace();
+		}
+		return resp;
+	}
 	
+	@RequestMapping(value = "/delete/{id}",method = {RequestMethod.DELETE,RequestMethod.GET})
+	public ResponseEntity<String> DeleteOnePatient(@PathVariable Integer id){
+		ResponseEntity<String> resp=null;
+		try {
+			Boolean exist=service.UpdatePatient(id);
+			if(exist) {
+				service.DeletePatient(id);
+				resp=new ResponseEntity<String>("Deleted..",HttpStatus.OK);
+			}
+			else
+			{
+				resp=new ResponseEntity<String>("Not Exist..",HttpStatus.BAD_REQUEST);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			resp=new ResponseEntity<String>("Unable to Delete..",HttpStatus.INTERNAL_SERVER_ERROR);
+			e.printStackTrace();
+		}
+		return resp;
+	}
+	
+	@RequestMapping(value = "/update",method = RequestMethod.PUT)
+	public ResponseEntity<String> UpdateContact(@RequestBody Patient patient) {
+		
+		ResponseEntity<String> resp=null;
+		try {
+			Boolean exist=service.UpdatePatient(patient.getId());
+			if(exist) {
+			service.savePatient(patient);
+			resp=new ResponseEntity<String>("updated..",HttpStatus.OK);
+			}
+			else
+			{
+				resp=new ResponseEntity<String>("Not Exist",HttpStatus.BAD_REQUEST);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			resp=new ResponseEntity<String>("Unable to Update",HttpStatus.INTERNAL_SERVER_ERROR);
+			e.printStackTrace();
+		}
+		return resp;	
+	}
 }
