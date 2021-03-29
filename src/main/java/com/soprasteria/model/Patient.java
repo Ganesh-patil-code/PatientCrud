@@ -1,5 +1,6 @@
 package com.soprasteria.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +20,9 @@ public class Patient {
 	@Id
 	@GeneratedValue
 	private int id;
+	@Column(name = "last_name")
 	private String lastname;
+	@Column(name = "first_name")
 	private String firstname;
 	private int age;
 	
